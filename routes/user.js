@@ -14,8 +14,8 @@ app.use(express.session({secret: "This is a secret"}));
 //----------------------------------------------------------------------------------------------------------------
 
 
-app.post ('/user/authenticate', function(req,res) {
-	userCo.findOne({'Username' : req.body.Username}, function (err, user) {
+app.post ('/authenticate', function(req,res) {
+	userCol.findOne({'Username' : req.body.Username}, function (err, user) {
 		if (user == null) 
 			res.send("Account doesn't exist, create account");
 		else if (user != null) {
@@ -25,13 +25,13 @@ app.post ('/user/authenticate', function(req,res) {
 	});
 });
 
-app.post('/user/createaccount', function(req,res) {
-	userCo.findOne({'Username' : req.body.Username}, function (err, user) {
+app.post('/createaccount', function(req,res) {
+	userCol.findOne({'Username' : req.body.Username}, function (err, user) {
 		if (user != null) {
 			res.send("Account Already Exists for this Username");
 		}
 		else {
-			var newuser = new userCo ({
+			var newuser = new userCol ({
 				Name: req.body.Name,
 				Username: req.body.Username,
 				LinesWritten: req.body.LinesWritten,

@@ -19,40 +19,6 @@ app.get('/logoff', function(req,res) {
 	res.send("Log off");
 });	
 
-app.post ('/user/authenticate', function(req,res) {
-	userCol.findOne({'Username' : req.body.Username}, function (err, user) {
-		if (user == null) 
-			res.send("Account doesn't exist, create account");
-		else if (user != null) {
-			req.session.userid = user._id;
-			res.send("Successfully logged in");
-		}
-	});
-});
-
-app.post('/user/createaccount', function(req,res) {
-	userCol.findOne({'Username' : req.body.Username}, function (err, user) {
-		if (user != null) {
-			res.send("Account Already Exists for this Username");
-		}
-		else {
-			var newuser = new userCol ({
-				Name: req.body.Name,
-				Username: req.body.Username,
-				LinesWritten: req.body.LinesWritten,
-				PeopleICodeWith: req.body.PeopleICodeWith,
-				Points: req.body.Points,
-				AverageLineTime: req.body.AverageLineTime,
-				AverageEditTime: req.body.AverageEditTime,
-				Age: req.body.Age,
-				Bio: req.body.Bio,
-				Location: req.body.Location
-			});
-			newuser.save();
-			res.send("SHIT WOKRED");
-		}
-	});
-});
 
 
 app.get('/logout', function(req,res ) {

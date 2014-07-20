@@ -76,8 +76,8 @@ app.configure('development', function(){
 });
 
 app.use('/', routes);
-//app.use('/user', user);
-//app.use('/me', me);
+app.use('/user', user);
+app.use('/me', me);
 //app.get('/users', user.list);
 allowCrossDomain = function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
