@@ -1,4 +1,4 @@
-var express = require('express')
+express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , me = require('./routes/me')
@@ -10,10 +10,10 @@ var path = require('path');
 var email = require('emailjs');
 var favicon = require('static-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var app = express();
+app = express();
 
 
 app.set('port', process.env.PORT || 3000);
@@ -36,15 +36,50 @@ app.use(function(req, res, next) {
   });
 
 
+
+
+
+
+ mongoose = require('mongoose');
+	mongoose.connect('mongodb://127.0.0.1:27017/mydb');
+ db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function callback () {});
+ Schema = mongoose.Schema;
+ person = new Schema ({
+	Name: String,
+	Username: String,
+	LinesWritten: Number,
+	PeopleICodeWith: [],
+	Points: Number,
+	AverageLineTime: Number,
+	AverageEditTime: Number,
+	Age: Number,
+	Bio: String,
+	Location: String
+});
+  userCol = mongoose.model('angelhacksaccounts', person);
+mongoose.connect('mongodb://127.0.0.1:27017/mydb');
+
+
+
+
+
+
+
+
+
+
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
 app.use('/', routes);
-app.use('/user', user);
-app.use('/me', me);
+//app.use('/user', user);
+//app.use('/me', me);
 //app.get('/users', user.list);
-var allowCrossDomain = function(req, res, next) {
+allowCrossDomain = function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header('Access-Control-Allow-Credentials', 'true');
