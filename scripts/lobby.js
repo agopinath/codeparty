@@ -1,6 +1,6 @@
 joinLobby();
 (function showAlert( ) {setTimeout(function() {
-var lastLen = -1;
+	var lastLen = -1;
 	$.ajax({
 			type: "GET",
 			url: "http://5d9ca87.ngrok.com/lobby/getlist",
@@ -53,7 +53,8 @@ function updateLobby(ids) {
 }
 
 function gameStart() {
-	$.ajax({
+	location.href="./game.html";
+	/*$.ajax({
 		type: "POST",
 		url: "http://5d9ca87.ngrok.com/lobby/gameStart",
 		success:function(data) {
@@ -64,7 +65,7 @@ function gameStart() {
 		error:function(){
 			console.log("ERROR");
 		}
-	});
+	});*/
 }
 
 function joinLobby() {

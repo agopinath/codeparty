@@ -2,6 +2,7 @@ var roomID = "";
 var initGameData;
 var socket;
 var codeArea = document.getElementById("codeArea");
+createGame();
 function createGame() {
 	$.ajax({
 		type: "GET",
@@ -20,12 +21,12 @@ function createGame() {
 
 function init(info) {
 	//sockIOInit();
-    console.log("Team 1 pts: " + info.Team[0].Points);
+    /*console.log("Team 1 pts: " + info.Team[0].Points);
     console.log("Team 2 pts: " + info.Team[1].Points);
     console.log("Team 2 person 2 name : " + info.Team[1].Member[1].Name);
     console.log("Team 1 person 1 name : " + info.Team[0].Member[0].Name);
 
-    var table = document.getElementById("table-one");
+   /* var table = document.getElementById("table-one");
     console.log("tblrlen: " + table.rows.length);
 
     table.innerHTML = "";
@@ -34,13 +35,14 @@ function init(info) {
     table.rows[2].innerHTML = "<td class='username-cell' id='t2_username1'>" + info.Team[1].Member[0].Name + "</td>";
     table.rows[3].innerHTML = "<td class='username-cell' id='t2_username1'>" + info.Team[1].Member[1].Name + "</td>";
 
-    codeArea = document.getElementById("codeArea");
+    codeArea = document.getElementById("codeArea");*/
 
     startNotifsListener();
 }
 
 function startNotifsListener() {
     (function showAlert( ) {setTimeout(function() {
+    console.log("checking notifs...");
     $.ajax({
             type: "GET",
             url: "http://5d9ca87.ngrok.com/game/notifs",
@@ -54,7 +56,7 @@ function startNotifsListener() {
                 console.log("ERROR");
             }
         });
-    }, 2000)})();
+    }, 500)})();
 }
 
 /*function sockIOInit() {
@@ -67,6 +69,7 @@ function startNotifsListener() {
 function submitCode() {
     console.log("submitCode()");
     var code = codeArea.value;
+    console.log(code);
     $.ajax({
         type: "POST",
         url: "http://5d9ca87.ngrok.com/game/submitcode",
@@ -105,11 +108,12 @@ function handleCodeType(evt) {
 
 function updateCode(codeText) {
     var ctext = codeText;
+    console.log(ctext);
     $.ajax({
         type: "POST",
         url: "http://5d9ca87.ngrok.com/game/updatecode",
         data: {
-            text: ctext
+            Code: ctext
         },
         ssuccess:function(data) {console.log("updatecode sucess");},
         xhrFields: {withCredentials: true},

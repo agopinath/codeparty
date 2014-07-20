@@ -86,5 +86,10 @@ table, th, td {
 }
 
 #lnums {
-	float: left;
+	margin: 3px 0 0 0;
+	display: inline-block;
+}
+
+#lnums table, th, td {
+   border: 0px solid black;
 }
