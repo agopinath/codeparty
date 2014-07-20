@@ -1,6 +1,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , me = require('./routes/me')
   , cors = require('cors')
   , http = require('http')
   , path = require('path');
@@ -40,8 +41,9 @@ app.configure('development', function(){
 });
 
 app.use('/', routes);
-//app.get('/', routes.index);
-app.get('/users', user.list);
+app.use('/user', user);
+app.use('/me', me);
+//app.get('/users', user.list);
 var allowCrossDomain = function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
