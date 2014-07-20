@@ -1,3 +1,12 @@
+.home-menu a{
+	padding:0;
+}
+.home-menu img{
+	height:80px;
+}
+.pure-menu-heading{
+	padding:0;
+}
 #side-bar{
 	float:left;
 	width:100%;
