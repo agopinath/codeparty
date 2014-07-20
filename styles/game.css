@@ -1,0 +1,45 @@
+#side-bar{
+	float:left;
+	width:100%;
+}
+table{
+	text-align:center;
+	margin-top:5%;
+	margin-bottom:5%;
+	width:100%;
+}
+table, th, td {
+ 	border:1px solid #e6e6e6;
+    font-size: inherit;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 10px; /* cell padding */
+}
+.color-cell{
+	background-color:red;
+}
+.username-cell{
+	color:#474747;
+	background-color:white;
+}
+.problem{
+	width:100%;
+	text-align:center;
+	background-color:gray;
+}
+.pure-g{
+	text-align:center;
+	margin-top:5%;
+}
+.pure-u-1-6{
+	
+}
+.pure-u-5-6{
+	background-color:gray;
+}
+#progress-bar{
+	text-align:center;
+	position:fixed;
+	bottom:0;
+	background-color:gray;
+	width:100%;
+}
