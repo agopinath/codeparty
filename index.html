@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+	</head>
+	<body>
+		<form id="uname-input">
+			Username: <input type="text" name="username" id="uname"><br>
+			<input type="submit" value="Submit">
+		</form>
+		<script>
+			var form = document.getElementById("uname-input");
+			form.addEventListener('submit', function(event) {
+				event.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "http://5d9ca87.ngrok.com/user/authenticate",
+					data: {
+						Username: document.getElementById("uname").value
+					},
+					success:function(data) {
+						if(data == "true") {
+							console.log("Logged in successfully!!");
+							location.href = "./dashboard.html";
+						}
+						else {
+							alert('Wrong username');
+						}
+					},
+					xhrFields: {withCredentials: true},
+					error:function(){
+						console.log("ERROR");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
