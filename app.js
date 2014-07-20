@@ -73,7 +73,8 @@ game = new Schema ({
     isFinished: Boolean,
     Turn: Number,
     Members: [{
-      ID: String
+      ID: String,
+      Name: String
     }]
   }],
   MatchOver: Boolean
