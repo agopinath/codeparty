@@ -1,9 +1,34 @@
 <html>
 	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			$.ajax({
+				type: "POST",
+				url: "http://7d2f0c2b.ngrok.com/user/createaccount",
+				data: {
+					Name:  "Ajay",
+					Username: "ajay", 
+					LinesWritten: 0,
+					PeopleICodeWith: ["",""],
+					Points: 0,
+					AverageLineTime: 0,
+					Age: 16,
+					Bio: "Test bio",
+					Location: "India"
+				},
+				success:function(data) {
+					console.log(data);
+				},
+				error:function(){
+					console.log("ERROR");
+				}
+			});
+		</script>
 	</head>
 	<body>
-		<a href="playnow.html">
-			<h1 id="play-button"> Play now! </h1>
-		</a>
+		<form id="uname-input">
+			Username: <input type="text" name="username" id="uname"><br>
+			<input type="submit" value="Submit">
+		</form>
 	</body>
 </html>
