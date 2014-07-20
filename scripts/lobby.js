@@ -1,5 +1,4 @@
 joinLobby();
-//var alertTimerId = setTimeout("showAlert()", 1000);
 (function showAlert( ) {setTimeout(function() {
 var lastLen = -1;
 	$.ajax({
@@ -7,9 +6,15 @@ var lastLen = -1;
 			url: "http://5d9ca87.ngrok.com/lobby/getlist",
 			success:function(data) {
 				console.log(data);
-				if (data.length >= 4 ) {
+				dLen = 0;
+				for(var jj = 0; jj < data.length; jj++) {
+					if(data[jj] != null)
+						dLen++;
+				}
+				console.log(dLen);
+				if (dLen >= 4 ) {
 					//clearTimeout(alertTimerId);
-					//gameStart();
+					gameStart();
 				} else if(lastLen != data.length) {
 					updateLobby(data);
 					lastLen = data.length;
@@ -53,6 +58,7 @@ function gameStart() {
 		url: "http://5d9ca87.ngrok.com/lobby/gameStart",
 		success:function(data) {
 			console.log("GAME STARTING: " + data);
+			location.href="./game.html";
 		},
 		xhrFields: {withCredentials: true},
 		error:function(){
