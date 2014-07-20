@@ -1,16 +1,3 @@
-.home-menu a{
-	padding:0;
-}
-.home-menu img{
-	height:80px;
-}
-.pure-menu-heading{
-	padding:0;
-}
-li a:hover{
-	background-color: #e13509 !IMPORTANT;
-	color:white !IMPORTANT;
-}
 #icon-bar{
 	background-color: #e13509;
 }
@@ -19,8 +6,4 @@ li a:hover{
 	margin: 0 auto;
 	margin-top:5%;
 	width:240px;
-}
-li {
-	font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 28px;
 }
