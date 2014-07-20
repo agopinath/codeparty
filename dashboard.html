@@ -1,12 +1,11 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-min.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-skin-mine.css">
-		<link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
 		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
-		<script src="./scripts/dashboard.js"></script>
 		<script>
-		  var socket = io.connect('http://7d2f0c2b.ngrok.com');
+		  var socket = io.connect('http://7c44bdb0.ngrok.com');
 		  socket.on('news', function (data) {
 		    console.log(data);
 		    socket.emit('my other event', { my: 'data' });
