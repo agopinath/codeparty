@@ -4,6 +4,7 @@ express = require('express')
   , me = require('./routes/me')
   , lobby = require('./routes/lobby')
   , you = require('./routes/you')
+  , game = require ('./routes/game')
   , cors = require('cors')
   , http = require('http')
   , path = require('path');
@@ -65,13 +66,14 @@ db.once('open', function callback () {});
 
 game = new Schema ({
   Lobby: [],
+  NameLobby: [],
   Teams: [{
     Points: Number,
     Code: [],
     isFinished: Boolean,
     Turn: Number,
     Members: [{
-      Turn: Boolean,
+      ID: String
     }]
   }],
   MatchOver: Boolean
@@ -96,6 +98,7 @@ app.use('/user', user);
 app.use('/me', me);
 app.use('/lobby', lobby);
 app.use('/you', you);
+app.use('/game', game);
 //app.get('/users', user.list);
 allowCrossDomain = function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");

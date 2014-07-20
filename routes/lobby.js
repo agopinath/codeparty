@@ -11,29 +11,54 @@ app.use(express.cookieParser());
 app.use(express.session({secret: "This is a secret"}));
 
 
+
+
+
 //----------------------------------------------------------------------------------------------------------------
 
+
+app.get('/getlist', function (req, res) { 
+	gameCol.findOne({'_id' : req.session.GameID}, function (err, game) {
+		if (game == null) 
+			res.send("Invalid session");
+		else
+			res.send(game.NameLobby)
+	});
+});
 app.post ('/join', function(req,res) {
-	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length < 4'}, function (err, user) {
+	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length <= 4'}, function (err, user) {
 		console.log(user);
 		if (user == null) 
 			createNewGame(req, res);
 		else if (user != null) {
 			addToGame(user, req, res);
+			req.session.GameID = user._id;
+		}
+	});
+});
+app.post ('/gameStart', function(req,res) {
+	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length <= 4'}, function (err, user) {
+		console.log(user);
+		if (user == null) 
+			createNewGame(req, res);
+		else if (user != null) {
+			addToGame(user, req, res);
+			req.session.GameID = user._id;
 		}
 	});
 });
 
 function addToGame (user, req, res) {
-	gameCol.update({ '_id': user._id}, { $push: { 'Lobby': [req.session.userid]} }, function (err, user) {
+	gameCol.update({ '_id': user._id}, { $push: { 'Lobby': req.session.userid, 'NameLobby' : req.session.nombre} }, function (err, user) {
+		console.log(user);
 		res.send("User added to game");
-		req.session.GameID = user._id;
 	});
 }
 
 function createNewGame (req, res) {
 	var newgame = new gameCol ({
-		Lobby: [req.session.userid],
+		Lobby: [],
+		NameLobby: [req.session.nombre],
 		Teams: [],
 		MatchOver :  false
 	});
@@ -43,21 +68,7 @@ function createNewGame (req, res) {
 	});
 }
 
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-server.listen(55512);
 
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
-});
-
-io.on('connect', function (socket) {
-  socket.emit('lopl', { hello: 'worlafd' });
-  socket.on('my bob event', function (data) {
-    console.log(data);
-  });
-  socket.emit('p1', {bob: 'pasrithvi'});
-});
 
 
 module.exports = app;
