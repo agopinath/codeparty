@@ -1,0 +1,15 @@
+.content{
+	margin-top:10%;
+	margin-left:auto;
+	margin-right:auto;
+	width:50%;
+}
+#lobby-div table{
+	width:100%;
+}
+#lobby-div tr, td {
+    font-family: 'PT Sans', sans-serif; /*"Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+    font-size: 42px;
+	color:black;
+	overflow: visible;
+}

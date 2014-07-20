@@ -1,0 +1,74 @@
+.wrapper{
+	font-family: 'PT Sans Narrow', sans-serif;
+}
+.problem{
+	width:100%;
+	text-align:center;
+	background-color:white;
+}
+.problem p{
+	font-size:18px;
+}
+table{
+	text-align:center;
+	margin-top:7%;
+	margin-bottom:7%;
+	width:100%;
+	font-family: 'PT Sans Narrow', sans-serif;
+}
+table, th, td {
+ 	border:1px solid #e6e6e6;
+    font-size: inherit;
+    overflow: visible;
+    padding: 10px;
+}
+#player-one-color{
+	background-color:red;
+}
+#player-two-color{
+	background-color:red;
+}
+#player-three-color{
+	background-color:yellow;
+}
+#player-four-color{
+	background-color:yellow;
+}
+.username-cell{
+	color:#474747;
+	background-color:white;
+}
+.pure-g{
+	margin:0 auto;
+	text-align:center;
+	width:70%;
+}
+.pure-u-1-6{
+	
+}
+.pure-u-5-6{
+	background-color:gray;
+	height:400px;
+}
+#progress-bar{
+	text-align:center;
+	position:fixed;
+	bottom:5%;
+	left:5%;
+	right:5%;
+	background-color:gray;
+	width:90%;
+}
+.progress-component{
+	height:20px;
+}
+#progress-one{
+	background-color:red;
+	float:left;
+	width:60%;
+}
+#progress-two{
+	background-color:yellow;
+	float:right;
+	width:40%;
+}
