@@ -1,0 +1,13 @@
+#lobby-div table, th, td {
+   border: 1px dotted black;
+   margin: 10 10 10 10;
+   padding: 5px;
+}
+
+
+#lobby-div th, td {
+    font-family: 'PT Sans', sans-serif; /*"Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+    font-size: 42px;
+	color:black;
+}
+

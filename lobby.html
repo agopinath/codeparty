@@ -1,27 +1,43 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
+		<link rel="stylesheet" type="text/css" href="./styles/lobby.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-min.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-skin-mine.css">
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 		<script src="./scripts/lobby.js"></script>
-		<script>
-		  var socket = io.connect('http://7d2f0c2b.ngrok.com');
-		  socket.on('news', function (data) {
-		    console.log(data);
-		    socket.emit('my other event', { my: 'data' });
-		  });
-
-		  socket.on('p1', function(dat) {
-		  		console.log("My name is: " + dat );
-		  });
-		</script>
 	</head>
 	<body class="pure-skin-mine">
-		<div class="wrapper">
-			<a href="playnow.html">
-				<h1 class="pure-button pure-button-primary" id="play-button">Play now!</h1>
-			</a>
+		<div class="header">
+			<div class="home-menu pure-menu pure-menu-open pure-menu-horizontal">
+				<a href="#" class="pure-menu-heading"><h1>codeparty</h1></a>
+				<ul>
+					<li><a href="#">Leaderboard</a></li>
+					<li><a href="javascript:void(0)" onclick="joinLobby();">Play Now!</a></li>
+					<li class="pure-menu-selected"><a href="#">Profile</a></li>
+				</ul>
+			</div>
+		</div>
+		<div align="center" id="lobby-div">
+			<table>
+			<tr>
+			  <td>100</td>
+			  <td>200</td>
+			</tr>
+			<tr>
+			  <td>300</td>
+			  <td>400</td>
+			</tr>
+			<tr>
+			  <td>500</td>
+			  <td>600</td>
+			</tr>
+			<tr>
+			  <td>700</td>
+			  <td>800</td>
+			</tr>
+			</table>
 		</div>
 	</body>
 </html>

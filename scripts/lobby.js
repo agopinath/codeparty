@@ -1,3 +1,5 @@
+
+
 function joinLobby() {
 	$.ajax({
 		type: "POST",
