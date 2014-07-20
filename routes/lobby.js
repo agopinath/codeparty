@@ -10,12 +10,7 @@ app.use(function(req, res, next) {
 app.use(express.cookieParser());
 app.use(express.session({secret: "This is a secret"}));
 
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-server.listen(55512);
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
-});
+
 
 
 
@@ -27,11 +22,22 @@ app.get('/getlist', function (req, res) {
 		if (game == null) 
 			res.send("Invalid session");
 		else
-			res.send(game.Lobby)
+			res.send(game.NameLobby)
 	});
 });
 app.post ('/join', function(req,res) {
-	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length < 4'}, function (err, user) {
+	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length <= 4'}, function (err, user) {
+		console.log(user);
+		if (user == null) 
+			createNewGame(req, res);
+		else if (user != null) {
+			addToGame(user, req, res);
+			req.session.GameID = user._id;
+		}
+	});
+});
+app.post ('/gameStart', function(req,res) {
+	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length <= 4'}, function (err, user) {
 		console.log(user);
 		if (user == null) 
 			createNewGame(req, res);
@@ -43,29 +49,22 @@ app.post ('/join', function(req,res) {
 });
 
 function addToGame (user, req, res) {
-	gameCol.update({ '_id': user._id}, { $push: { 'Lobby': req.session.userid} }, function (err, user) {
+	gameCol.update({ '_id': user._id}, { $push: { 'Lobby': req.session.userid, 'NameLobby' : req.session.nombre} }, function (err, user) {
 		console.log(user);
 		res.send("User added to game");
-		/*io.on('connect', function (socket) {
-			socket.emit('lobbyUpdate', { data: user.Lobby, gameid: user._id});
-			console.log("This is a message from socket to an old game" + user.Lobby);
-		});*/
 	});
 }
 
 function createNewGame (req, res) {
 	var newgame = new gameCol ({
-		Lobby: [req.session.userid],
+		Lobby: [],
+		NameLobby: [req.session.nombre],
 		Teams: [],
 		MatchOver :  false
 	});
 	newgame.save(function(err, user) {
 		req.session.GameID = user._id;
 		res.send("New game created.");
-		/*io.on('connect', function (socket) {
-			socket.emit('lobbyUpdate', { data: user.Lobby, gameid: user._id});
-					console.log("This is a message from socket to an new game" + user.Lobby);
-		});*/
 	});
 }
 

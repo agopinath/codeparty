@@ -20,6 +20,7 @@ app.post ('/authenticate', function(req,res) {
 			res.send("false");
 		else if (user != null) {
 			req.session.userid = user._id;
+			req.session.nombre = user.Name;
 			res.send("true");
 		}
 	});
