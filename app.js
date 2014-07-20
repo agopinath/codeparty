@@ -26,6 +26,13 @@ app.use(express.cookieParser());
 app.use(express.session({secret: "This is a secret"}));
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin',      req.headers.origin);
+    res.header('Access-Control-Allow-Methods',     'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers',     'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    next();
+  });
 
 
 app.configure('development', function(){
@@ -35,7 +42,21 @@ app.configure('development', function(){
 app.use('/', routes);
 //app.get('/', routes.index);
 app.get('/users', user.list);
+var allowCrossDomain = function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header('Access-Control-Allow-Credentials', 'true');
+        next();
+};
 
+//...
+// The session "visitCount"
+app.get('/zavala/style', function(req, res, next) {
+		res.header('Access-Control-Allow-Credentials', 'true');
+        req.session.visitCount = req.session.visitCount ? req.session.visitCount + 1 : 1;
+        res.send('You have visited this page ' + req.session.visitCount + ' times');
+          req.session.save()
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
