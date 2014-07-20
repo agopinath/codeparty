@@ -14,8 +14,17 @@ table, th, td {
     overflow: visible; /*to make ths where the title is really long work*/
     padding: 10px; /* cell padding */
 }
-.color-cell{
+#player-one-color{
 	background-color:red;
+}
+#player-two-color{
+	background-color:red;
+}
+#player-three-color{
+	background-color:yellow;
+}
+#player-four-color{
+	background-color:yellow;
 }
 .username-cell{
 	color:#474747;
@@ -42,4 +51,17 @@ table, th, td {
 	bottom:0;
 	background-color:gray;
 	width:100%;
+}
+.progress-component{
+	height:20px;
+}
+#progress-one{
+	background-color:red;
+	float:left;
+	width:60%;
+}
+#progress-two{
+	background-color:yellow;
+	float:right;
+	width:40%;
 }
