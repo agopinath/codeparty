@@ -33,22 +33,21 @@ app.get('/create', function(req ,res ){
 				Code: [],
 				isFinished: false,
 				Turn: 0,
-				Member: [{ID: gameset.Lobby[0]}, {ID: gameset.Lobby[1]}]
+				Member: [{ID: gameset.Lobby[0], Name: gameset.NameLobby[0]}, {ID: gameset.Lobby[1], Name: gameset.NameLobby[1]}]
 			};
 			var team2 = {
 				Points: 40,
 				Code: [],
 				isFinished: false,
 				Turn: 0,
-				Member: [{ID: gameset.Lobby[2]}, {ID: gameset.Lobby[3]}]
+				Member: [{ID: gameset.Lobby[2], Name: gameset.NameLobby[2]}, {ID: gameset.Lobby[3], Name: gameset.NameLobby[3]}]
 			};
 			removePoints(gameset);
 		}
-		res.send(gameset._id);
-
+		res.send(gameset);
 
 		io.on('connection', function (socket) {
-  			socket.emit('code', { data: 'world' });
+  			socket.emit('onInitData', { data: 'world' });
 		});
 	});
 });
