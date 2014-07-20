@@ -13,7 +13,39 @@ app.use(express.session({secret: "This is a secret"}));
 
 //----------------------------------------------------------------------------------------------------------------
 
+function createMeFunction(name) {
+    app.get('/' + name, function(req, res) {
+        userCol.findOne({'_id' : req.session.userid}, function(err, user) {
+            if (user == null) {
+                res.send("GG Account doesn't exist");
+            } else {
+                res.send(user[name]);
+            }
+        });
+    });
+}
 
+createMeFunction('Name');
+createMeFunction('Username');
+createMeFunction('LinesWritten');
+createMeFunction('PeopleICodeWith');
+createMeFunction('Points');
+createMeFunction('AverageLineTime');
+createMeFunction('AverageEditTime');
+createMeFunction('Age');
+createMeFunction('Bio');
+createMeFunction('Location');
+
+/*
+app.get('/lineswritten', function(req, res) {
+    userCol.findOne({'_id' : req.session.userid}, function(err, user) {
+        if (user == null) {
+            res.send("GG Account doesn't exist");
+        } else {
+            res.send(user.LinesWritten);
+        }
+    });
+});*/
 
 
 module.exports = app;
