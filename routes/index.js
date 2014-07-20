@@ -28,7 +28,26 @@ app.get('/logout', function(req,res ) {
 
 
 
+app.get('/zav/:omg', function(req, res) {
+  res.send("HEY " + req.params.omg)
+});
 
+app.get('/name/:name', function(req, res){
+		res.header('Access-Control-Allow-Credentials', 'true');
+    req.session.value = req.params.name;
+    res.send("<a href='/name'>GO</a>");
+});
+app.get('/name', function(req, res){
+    res.send(req.session.value);
+   });
+    app.get('/name/:add', function(req,res) {
+	req.session.name = req.params.add;
+	res.send(req.session.name);
+});
+
+app.get('/findmyname', function(req,res) {
+	res.send(req.session.name);
+});
 //----------------------------------------------------------------------------------------------------------------
 
 
@@ -36,7 +55,6 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 server.listen(12312);
 
-server.listen(80);
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');

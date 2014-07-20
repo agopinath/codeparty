@@ -2,6 +2,7 @@ express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , me = require('./routes/me')
+  , lobby = require('./routes/lobby')
   , cors = require('cors')
   , http = require('http')
   , path = require('path');
@@ -60,6 +61,24 @@ db.once('open', function callback () {});
 	Location: String
 });
   userCol = mongoose.model('angelhacksaccounts', person);
+
+game = new Schema ({
+  Lobby: [],
+  Teams: [{
+    Points: Number,
+    Code: [],
+    isFinished: Boolean,
+    Turn: Number,
+    Members: [{
+
+
+    }]
+  }],
+  MatchOver: Boolean
+});
+gameCol = mongoose.model('angelhacksgame', game);
+
+
 mongoose.connect('mongodb://127.0.0.1:27017/mydb');
 
 
@@ -78,6 +97,7 @@ app.configure('development', function(){
 app.use('/', routes);
 app.use('/user', user);
 app.use('/me', me);
+app.use('/lobby', lobby);
 //app.get('/users', user.list);
 allowCrossDomain = function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
