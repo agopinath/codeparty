@@ -40,7 +40,7 @@ app.get('/name/:name', function(req, res){
 app.get('/name', function(req, res){
     res.send(req.session.value);
    });
-    app.get('/name/:add', function(req,res) {
+ app.get('/name/:add', function(req,res) {
 	req.session.name = req.params.add;
 	res.send(req.session.name);
 });

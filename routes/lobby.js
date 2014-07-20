@@ -14,16 +14,50 @@ app.use(express.session({secret: "This is a secret"}));
 //----------------------------------------------------------------------------------------------------------------
 
 app.post ('/join', function(req,res) {
-	userCol.findOne({'Username' : req.body.Username}, function (err, user) {
+	gameCol.findOne({'Lobby' : {$exists:true}, $where:'this.Lobby.length < 4'}, function (err, user) {
+		console.log(user);
 		if (user == null) 
-			res.send("false");
+			createNewGame(req, res);
 		else if (user != null) {
-			req.session.userid = user._id;
-			res.send("true");
+			addToGame(user, req, res);
 		}
 	});
 });
 
+function addToGame (user, req, res) {
+	gameCol.update({ '_id': user._id}, { $push: { 'Lobby': [req.session.userid]} }, function (err, user) {
+		res.send("User added to game");
+		req.session.GameID = user._id;
+	});
+}
+
+function createNewGame (req, res) {
+	var newgame = new gameCol ({
+		Lobby: [req.session.userid],
+		Teams: [],
+		MatchOver :  false
+	});
+	newgame.save(function(err, user) {
+		req.session.GameID = user._id;
+		res.send("New game created.");
+	});
+}
+
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+server.listen(55512);
+
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/index.html');
+});
+
+io.on('connect', function (socket) {
+  socket.emit('lopl', { hello: 'worlafd' });
+  socket.on('my bob event', function (data) {
+    console.log(data);
+  });
+  socket.emit('p1', {bob: 'pasrithvi'});
+});
 
 
 module.exports = app;
