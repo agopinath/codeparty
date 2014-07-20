@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+		<!--<link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow' rel='stylesheet' type='text/css'>-->
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-min.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-skin-mine.css">
 		<link rel="stylesheet" type="text/css" href="./styles/game.css">
 		<link rel="stylesheet" type="text/css" href="./styles/header.css">
+		<script src="./scripts/jquery.js"></script>
+		<script src="./scripts/socket.io.js"></script>
+		
 	</head>
 	<body class="pure-skin-mine">
 		<div class="header">
@@ -29,12 +32,12 @@
 						<table id="table-one">
 							<tbody>
 								<tr>
-									<td id="player-one-color"></td>
-									<td class="username-cell">Young</td>
+									<td id="player-one-color" style="background-color:red;"></td>
+									<td class="username-cell" id="t1_username1">Young</td>
 								</tr>
 								<tr>
 									<td id="player-two-color"></td>
-									<td class="username-cell">Ajay</td>
+									<td class="username-cell" id="t1_username2">Ajay</td>
 								</tr>
 							</tbody>
 						</table>
@@ -42,25 +45,49 @@
 							<tbody>
 								<tr>
 									<td id="player-three-color"></td>
-									<td class="username-cell">Prithvi</td>
+									<td class="username-cell" id="t2_username1">Prithvi</td>
 								</tr>
 								<tr>
 									<td id="player-four-color"></td>
-									<td class="username-cell">William</td>
+									<td class="username-cell" id="t2_username2">William</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 			    </div>
 			    <div class="pure-u-5-6">
-			    	<p>insert code here</p>
+			    	<div id="lnums">
+				    	<table id="line-nums">
+			    		<tbody>
+							<tr>
+								<td id="lnum">1</td>
+							</tr>
+							<tr>
+								<td id="lnum">2</td>
+							</tr>
+							<tr>
+								<td id="lnum">3</td>
+							</tr>
+							<tr>
+								<td id="lnum">4</td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+			    	<textarea name="codeArea" cols="60" rows="10" wrap='off' id="codeArea" 
+			    	parent-width="100%" onkeypress="handleCodeType(event)"></textarea>
 			    </div>
+			    <div>
+					<input type="submit" value="Submit Code" onclick="submitCode()">
+					<input type="submit" value="Check Syntax" onclick="localEval()">
+				</div>
 			</div>
 		   	<div id="progress-bar">
 			   	<div class="progress-component" id="progress-one"></div>
 			   	<div class="progress-component" id="progress-two"></div>
 		    </div>
 		</div>
-		
+
+		<script src="./scripts/game.js"></script>
 	</body>
 </html>

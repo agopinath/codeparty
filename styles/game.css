@@ -72,3 +72,19 @@ table, th, td {
 	float:right;
 	width:40%;
 }
+
+#codeArea {
+	font-family: "Courier New";
+}
+
+#line-nums td {
+	padding: 0 0 0 0 ;
+}
+
+#lnum {
+	font-family: "Courier New";
+}
+
+#lnums {
+	float: left;
+}
