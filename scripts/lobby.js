@@ -11,10 +11,10 @@ var lastLen = -1;
 					if(data[jj] != null)
 						dLen++;
 				}
-				console.log(dLen);
+				console.log(dLen)
 				if (dLen >= 4 ) {
-					//clearTimeout(alertTimerId);
-					gameStart();
+					updateLobby(data);
+					setTimeout(function(){gameStart();}, 1000);
 				} else if(lastLen != data.length) {
 					updateLobby(data);
 					lastLen = data.length;
