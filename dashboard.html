@@ -2,6 +2,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-min.css">
+		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-skin-mine.css">
 		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 		<script>
 		  var socket = io.connect('http://7d2f0c2b.ngrok.com');
@@ -15,9 +16,11 @@
 		  });
 		</script>
 	</head>
-	<body>
-		<a href="playnow.html">
-			<h1 class="pure-button" style="text-align:right">Play now!</h1>
-		</a>
+	<body class="pure-skin-mine">
+		<div class="wrapper">
+			<a href="playnow.html">
+				<h1 class="pure-button pure-button-primary" id="play-button">Play now!</h1>
+			</a>
+		</div>
 	</body>
 </html>
