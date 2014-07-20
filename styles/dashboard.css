@@ -1,7 +1,12 @@
 a:hover{
-	background-color: #F43E1A !IMPORTANT;
+	background-color: #e13509 !IMPORTANT;
 	color:white !IMPORTANT;
 }
-ul{
-	
+#icon-bar{
+	background-color: #e13509;
+}
+#icon-bar img{
+	display:block;
+	margin: 0 auto;
+	width:240px;
 }

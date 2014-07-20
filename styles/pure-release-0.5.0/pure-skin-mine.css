@@ -99,7 +99,7 @@ body {
 .pure-skin-mine .pure-button-selected,
 .pure-skin-mine a.pure-button-primary,
 .pure-skin-mine a.pure-button-selected {
-    background-color: #F43E1A;
+    background-color: #e13509;
     color: #fffbfa;
 }
 
@@ -927,7 +927,7 @@ margin: 7px 2px;
 
 /* SELECTED MENU ITEM */
 .pure-skin-mine .pure-menu li.pure-menu-selected a {
-    background-color: #F43E1A;
+    background-color: #e13509;
     color: #fffbfa;
 }
 
