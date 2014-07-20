@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-min.css">
 		<link rel="stylesheet" type="text/css" href="./styles/pure-release-0.5.0/pure-skin-mine.css">
+		<link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
 		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 		<script src="./scripts/dashboard.js"></script>
 		<script>
@@ -18,10 +18,15 @@
 		</script>
 	</head>
 	<body class="pure-skin-mine">
-		<div class="wrapper">
-			<a href="playnow.html">
-				<h1 class="pure-button pure-button-primary" id="play-button">Play now!</h1>
-			</a>
+		<div class="header">
+			<div class="home-menu pure-menu pure-menu-open pure-menu-horizontal">
+				<a href="#" class="pure-menu-heading"><h1>codeparty</h1></a>
+				<ul>
+					<li><a href="#">Leaderboard</a></li>
+					<li><a href="playnow.html">Play Now!</a></li>
+					<li class="pure-menu-selected"><a href="#">Profile</a></li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>
