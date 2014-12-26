@@ -6,6 +6,11 @@ $(document).ready(function() {
 function tryLogin(event) {
 	event.preventDefault();
 	var usernameText = $("#username").val();
+	if(usernameText.trim() === "") {
+		alert("Please enter a username!");
+		return;
+	}
+
 	var passText = $("#password").val();
 	console.log("trying login! with " + usernameText + ", pass: " + passText);
 

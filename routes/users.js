@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET users listing. */
 router.post('/login', function(req, res) {
 	var credentials = req.body;
-	console.log("User: " + credentials.username + ", Pass: " + credentials.password);
+	console.log("@@@Trying login w/ username: " + credentials.username);
 });
 
 module.exports = router;
