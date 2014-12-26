@@ -25,6 +25,11 @@ function tryLogin(event) {
     url: '/users/login',
     dataType: 'JSON'
 	}).done(function(response) {
-		console.log("GOT RESPONSE!");
+		if(response.msg === "") {
+			alert("login success!");
+		} else {
+			alert("login failed: " + response.msg);
+		}
+		//console.log("GOT RESPONSE!");
 	});
 }
