@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1 Welcome to Codeparty!
+	br
+	#loginForm
+		input#username.u-full-width(type="text", placeholder="Username")
+		input#password.u-full-width(type="text", placeholder="Password")
+		button#loginBtn.button-primary Log In
