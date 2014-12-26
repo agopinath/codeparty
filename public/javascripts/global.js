@@ -27,9 +27,14 @@ function tryLogin(event) {
 	}).done(function(response) {
 		if(response.msg === "") {
 			alert("login success!");
+			window.location.href = "/dashboard";
+			/*$.ajax({
+		    type: 'GET',
+		    url: '/dashboard',
+		    dataType: 'JSON'
+			});*/
 		} else {
 			alert("login failed: " + response.msg);
 		}
-		//console.log("GOT RESPONSE!");
 	});
 }

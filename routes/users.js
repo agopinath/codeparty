@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.post('/login', tryLogin);
 
 function tryLogin(req, res) {
@@ -21,13 +20,17 @@ function tryLogin(req, res) {
 	    	throw err;
 	    	res.send({msg: err});
 	    } else {
-	    	console.log(result);
 	    	// if search for username has at least one result, login is success
 				var userExists = (Object.keys(result).length > 0);
 
 				// handle login status
 				if(userExists) {
 					console.log("@@@ LOGIN SUCCESS!");
+
+					// store session cookie data as user info
+					// and send 'login success' status via msg
+					req.session.userdata = result[0];
+					console.log(result[0]);
 					res.send({msg: ""});
 				} else {
 					console.log("@@@ LOGIN FAILED :(");
