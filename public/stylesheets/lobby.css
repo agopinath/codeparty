@@ -1,0 +1,12 @@
+#banner-bar {
+    background-color: #e13509;
+}
+#banner-bar img {
+    display:block;
+    margin: 0 auto;
+    width:240px;
+}
+#lobbyTable {
+	width: 50%;
+	margin: auto;
+}

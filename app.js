@@ -14,6 +14,7 @@ var expressSession = require('express-session'),
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
+var lobby = require('./routes/lobby');
 
 var app = express();
 
@@ -46,6 +47,7 @@ app.use(function(req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/dashboard', dashboard);
+app.use('/lobby', lobby);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

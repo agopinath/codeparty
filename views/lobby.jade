@@ -1,0 +1,21 @@
+extends layout
+
+block extraHeader
+	link(rel='stylesheet', href='/stylesheets/lobby.css')
+block content
+	#banner-bar
+					img(src='./images/logo-square.jpg')
+	h1 Welcome to Codeparty lobby!
+	table#lobbyTable.pure-table
+		thead
+			th #
+			th Name
+			th Handle
+			th Location
+		tbody
+			each val, index in ['---', '---', '---', '---']
+				tr
+					td= (index+1)
+					td= val
+					td= val
+					td= val
