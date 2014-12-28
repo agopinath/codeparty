@@ -10,6 +10,7 @@ var mongo = require('mongoskin'),
 // for cookie management
 var expressSession = require('express-session'),
 	MongoStore = require('connect-mongo')(expressSession);
+
 //setup routes here
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,6 +18,12 @@ var dashboard = require('./routes/dashboard');
 var lobby = require('./routes/lobby');
 
 var app = express();
+
+// for Socket.IO
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+app.httpserver = server;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
 	req.db = db;
+	req.io = io;
 	next();
 });
 app.use('/', routes);

@@ -10,8 +10,13 @@ function showLobby(req, res) {
 }
 
 function handleJoin(req, res) {
+	var io = req.io;
 	console.log("got join lobby req");
-	res.send("You're in!");
+	io.on('connection', function (socket) {
+		console.log("Got socket connection!");
+	  io.emit('status', { status: "rekt" });
+	});
+	res.send("");
 }
 
 module.exports = router;
