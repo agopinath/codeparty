@@ -15,7 +15,14 @@ function joinLobby() {
 function joinLobbyRoom() {
 	console.log("joining lobby room");
 	var socket = io.connect('http://localhost');
-	socket.on('status', function(data) {
-		console.log("Got status: " + data.status);
+	socket.on('connect', function() {
+		socket.on('updateusers', function(usernames) {
+		  console.log('received users:');
+		  console.log(usernames);
+		});
+		
+		console.log('adding myself to users');
+		socket.emit('adduser');
 	});
+
 }
