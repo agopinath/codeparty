@@ -5,18 +5,18 @@ $(document).ready(function() {
 
 function tryLogin(event) {
 	event.preventDefault();
-	var usernameText = $("#username").val();
-	if(usernameText.trim() === "") {
-		alert("Please enter a username!");
+	var usernameText = $('#username').val();
+	if(usernameText.trim() === '') {
+		alert('Please enter a username!');
 		return;
 	}
 
-	var passText = $("#password").val();
-	console.log("trying login! with " + usernameText + ", pass: " + passText);
+	var passText = $('#password').val();
+	console.log('trying login! with ' + usernameText + ', pass: ' + passText);
 
 	var creds = {
-		"username": usernameText,
-		"password": passText
+		'username': usernameText,
+		'password': passText
 	};
 
 	$.ajax({
@@ -25,16 +25,16 @@ function tryLogin(event) {
     url: '/users/login',
     dataType: 'JSON'
 	}).done(function(response) {
-		if(response.msg === "") {
-			alert("login success!");
-			window.location.href = "/dashboard";
+		if(response.msg === '') {
+			alert('login success!');
+			window.location.href = '/dashboard';
 			/*$.ajax({
 		    type: 'GET',
 		    url: '/dashboard',
 		    dataType: 'JSON'
 			});*/
 		} else {
-			alert("login failed: " + response.msg);
+			alert('login failed: ' + response.msg);
 		}
 	});
 }

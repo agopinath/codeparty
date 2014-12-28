@@ -7,11 +7,11 @@
 .pure-menu-heading{
 	padding:0;
 }
-li a:hover{
+.header li a:hover{
 	background-color: #e13509 !IMPORTANT;
 	color:white !IMPORTANT;
 }
-li {
+.header li {
 	font-family: 'PT Sans Narrow', sans-serif;
     font-size: 28px;
 }

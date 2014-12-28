@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // for db
 var mongo = require('mongoskin'),
-	db = mongo.db("mongodb://localhost:27017/codeparty", {native_parser:true});
+	db = mongo.db('mongodb://localhost:27017/codeparty', {native_parser:true});
 // for cookie management
 var expressSession = require('express-session'),
 	MongoStore = require('connect-mongo')(expressSession);

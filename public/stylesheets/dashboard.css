@@ -5,10 +5,10 @@ body {
 .username {
     text-align:center;
 }
-#icon-bar {
+#banner-bar {
     background-color: #e13509;
 }
-#icon-bar img {
+#banner-bar img {
     display:block;
     margin: 0 auto;
     width:240px;

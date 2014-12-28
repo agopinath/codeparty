@@ -5,10 +5,10 @@ router.post('/login', tryLogin);
 
 function tryLogin(req, res) {
 	var creds = req.body;
-	console.log("@@@Trying login w/ username: " + creds.username);
+	console.log('@@@Trying login w/ username: ' + creds.username);
 
 	var db = req.db;
-	db.collection('userlist').find({"username": creds.username}, function(err, result) {
+	db.collection('userlist').find({'username': creds.username}, function(err, result) {
 		if(err) {
 			res.send({msg: err});
 			throw err;
@@ -25,16 +25,16 @@ function tryLogin(req, res) {
 
 				// handle login status
 				if(userExists) {
-					console.log("@@@ LOGIN SUCCESS!");
+					console.log('@@@ LOGIN SUCCESS!');
 
 					// store session cookie data as user info
 					// and send 'login success' status via msg
 					req.session.userdata = result[0];
 					console.log(result[0]);
-					res.send({msg: ""});
+					res.send({msg: ''});
 				} else {
-					console.log("@@@ LOGIN FAILED :(");
-					res.send({msg: "invalid credentials"});
+					console.log('@@@ LOGIN FAILED :(');
+					res.send({msg: 'invalid credentials'});
 				}
 	    }
 		});

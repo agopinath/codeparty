@@ -2,12 +2,23 @@ doctype html
 html
 	head
 		title= title
-		link(rel="stylesheet", href="/stylesheets/dashboard.css")
-		link(rel="stylesheet", href="/stylesheets/header.css")
-		link(rel="stylesheet", href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css")
-		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow")
-		meta(name="viewport", content="width=device-width, initial-scale=1")
+		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow')
+		link(rel='stylesheet', href='http://yui.yahooapis.com/pure/0.5.0/pure-min.css')
+		link(rel='stylesheet', href='/stylesheets/header.css')
+		block extraHeader
+		meta(name='viewport', content='width=device-width, initial-scale=1')
 	body
+		.header
+			.home-menu.pure-menu.pure-menu-open.pure-menu-horizontal
+				a.pure-menu-heading(href='#')
+					img(src='./images/logo-long.jpg')
+				ul
+					li
+						a#leaderboardBtn(href='#') Leaderboard
+					li
+						a#playBtn(href='#') Play Now!
+					li
+						a#dashboardBtn(href='#') Profile
 		block content
-		script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
-		script(src="/javascripts/global.js")
+		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+		script(src='/javascripts/global.js')
