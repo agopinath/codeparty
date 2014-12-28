@@ -1,8 +1,20 @@
 extends layout
 
 block content
-	h1 Dashboard for #{username}
-	h2 Well, what do you wanna do today, #{name}?
-	br
-	#navbar
-	#dashboard
+	.pure-skin-mine
+		.header
+			.home-menu.pure-menu.pure-menu-open.pure-menu-horizontal
+				a.pure-menu-heading(href='#')
+					img(src='./images/logo-long.jpg')
+				ul
+					li
+						a(href='#') Leaderboard
+					li
+						a(href="#") Play Now!
+					li.pure-menu-selected
+						a(href="#") Profile
+			#icon-bar
+				img(src='./images/logo-square.jpg')
+			.username
+				h1= userdata.fullname
+				h3= userdata.username

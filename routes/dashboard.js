@@ -5,12 +5,14 @@ router.get('/', showDashboard);
 
 function showDashboard(req, res) {
 	var userdata = req.session.userdata;
-	var firstName = userdata.fullname.split(" ")[0];
+	//var firstName = userdata.fullname.split(" ")[0];
 
 	// render dashboard according to user info
-	res.render('dashboard', {
-		username: userdata.username,
-		name: firstName
+	res.render('dashboard', 
+		{"userdata": {
+			"username": userdata.username,
+			"fullname": userdata.fullname
+		}
 	});
 }
 

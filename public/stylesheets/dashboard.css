@@ -1,0 +1,15 @@
+body {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 22px;
+}
+.username {
+    text-align:center;
+}
+#icon-bar {
+    background-color: #e13509;
+}
+#icon-bar img {
+    display:block;
+    margin: 0 auto;
+    width:240px;
+}
