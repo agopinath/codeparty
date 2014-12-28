@@ -8,6 +8,10 @@ function joinLobby() {
     type: 'GET',
     url: '/lobby/join',
 	}).done(function(response) {
-		console.log(response);
+		joinLobbyRoom();
 	});
+}
+
+function joinLobbyRoom() {
+	
 }
