@@ -3,10 +3,11 @@ $(document).ready(function() {
 });
 
 function joinLobby() {
-	/*$.ajax({
+	console.log('joining');
+	$.ajax({
     type: 'GET',
     url: '/lobby/join',
 	}).done(function(response) {
 		console.log(response);
-	});*/
+	});
 }
