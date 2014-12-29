@@ -1,19 +1,24 @@
 $(document).ready(function() {
-	joinLobby();
+	//joinLobby();
+	joinLobbyRoom();
 });
 
-function joinLobby() {
+/*function joinLobby() {
 	$.ajax({
 		type: 'GET',
 		url: '/lobby/join',
 	}).done(function(response) {
+		console.log('@@@@ SENDING REQ');
 		joinLobbyRoom();
 	});
 }
-
+window.onbeforeunload = function () {
+	socket.disconnect();
+  return 'Your content has not been properly saved yet!';
+};*/
 function joinLobbyRoom() {
 	console.log("joining lobby room");
-	var socket = io.connect('http://localhost');
+	var socket = io.connect('http://localhost', {'forceNew':true });
 	socket.on('connect', function() {
 		socket.on('updateusers', function(memberlist) {
 		  console.log('received room memberlist:');
