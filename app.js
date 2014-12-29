@@ -54,8 +54,19 @@ app.use(function(req, res, next) {
 });
 app.use('/', routes);
 app.use('/users', users);
-app.use('/dashboard', dashboard);
-app.use('/lobby', lobby);
+
+app.use('/dashboard', requireAuth, dashboard);
+app.use('/lobby', requireAuth, lobby);
+
+function requireAuth(req, res, next) {
+	// if req.session.userdata is set (aka user has logged in), then user is authenticated
+	// if not, then redirect to login page
+	if(req.session.userdata) {
+		next();
+	} else {
+		res.redirect(401, '/');
+	}
+};
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
